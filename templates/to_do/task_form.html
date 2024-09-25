@@ -1,0 +1,22 @@
+{% extends "base/_base.html" %}
+{% load crispy_forms_filters %}
+
+{% block content %}
+  <div class="d-flex justify-content-between align-items-center mt-3">
+    <h1>{{ object|yesno:"Update,New" }} task</h1>
+
+    <label for="submit-form" class="btn btn-primary">
+      {{ object|yesno:"Update,Add" }}
+    </label>
+  </div>
+
+  <div>
+    <form action="" method="post" novalidate>
+      {% csrf_token %}
+      {{ form|crispy }}
+
+      <input id="submit-form" type="submit" class="d-none">
+    </form>
+  </div>
+
+{% endblock %}
